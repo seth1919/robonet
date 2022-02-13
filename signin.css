@@ -17,9 +17,21 @@
     font-family: 'Copperplate Gothic';
 }
 
+.blacktitle{
+    font-size: 80px;
+    color: black;
+    font-family: 'Copperplate Gothic';
+}
+
 .login {
     font-size: 40px;
     color: white;
+    font-family: 'Copperplate Gothic';
+}
+
+.signup {
+    font-size: 40px;
+    color: black;
     font-family: 'Copperplate Gothic';
 }
 
