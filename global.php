@@ -6,7 +6,7 @@ session_start();
 
 	$user_data = check_login($con);
 
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
+	if ($_SERVER['REQUEST_METHOD'] == "POST"){
 		$insert_message = $_POST['new_message'];
 		
 		$query = $con->prepare("INSERT INTO messages (messageID, userID, message) VALUES (NULL, ?, ?)");
@@ -41,7 +41,14 @@ session_start();
 		if ($result->num_rows > 0){
 			// output data of each row
 			while ($row = $result->fetch_assoc()) {
-				echo "Message number: " . $row["messageID"]. " From user: " . $row["userID"]. " " . $row["message"]. "<br>";
+
+				$matching_user_query = "select * from logininfo where userID = '" . $row['userID'] . "' limit 1";
+				$matching_user_result = mysqli_query($con, $matching_user_query);
+				if ($matching_user_result && mysqli_num_rows($matching_user_result) > 0){
+					$matching_user = mysqli_fetch_assoc($matching_user_result);
+				}
+
+				echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: " . $matching_user["username"]. "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
 			}
 		} else {
 			echo "0 results";
@@ -50,6 +57,7 @@ session_start();
 
 	<br><br>
 
+	<!-- display the 10 most recent posts by this user -->
 	Your most recent posts: <br>
 	<?php
 		$host = "localhost";
@@ -66,7 +74,13 @@ session_start();
 		if ($result->num_rows > 0){
 			// output data of each row
 			while ($row = $result->fetch_assoc()) {
-				echo "Message number: " . $row["messageID"]. " From user: " . $row["userID"]. " " . $row["message"]. "<br>";
+				$matching_user_query = "select * from logininfo where userID = '" . $row['userID'] . "' limit 1";
+				$matching_user_result = mysqli_query($con, $matching_user_query);
+				if ($matching_user_result && mysqli_num_rows($matching_user_result) > 0){
+					$matching_user = mysqli_fetch_assoc($matching_user_result);
+				}
+
+				echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: " . $matching_user["username"]. "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
 			}
 		} else {
 			echo "0 results";
@@ -80,6 +94,15 @@ session_start();
 
 		<input type="text" name="new_message"><br><br>
 		<input class="LoginButton" type="submit" value="submit"><br><br><br>
+	</form>
+
+	<br><br><br><br>
+
+	<form action="searchuser.php">
+		<div class="login">Search for a user</div><br>
+
+		<input type="text" name="user_search"><br><br>
+		<input class="LoginButton" type="submit" value="search"><br><br><br>
 	</form>
 
 	<br><br>
