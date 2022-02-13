@@ -1,0 +1,32 @@
+/* holds the starry background image and all the information on top of it */
+.banner {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+.title{
+    font-size: 80px;
+    color: white;
+    font-family: 'Copperplate Gothic';
+}
+
+.login {
+    font-size: 40px;
+    color: white;
+    font-family: 'Copperplate Gothic';
+}
+
+.LoginButton{
+    padding: 10px;
+    width: 80px;
+    color: white;
+    background-color: lightgrey;
+    border: none;
+}
