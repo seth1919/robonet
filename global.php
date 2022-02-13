@@ -13,6 +13,7 @@ session_start();
 		$query->bind_param("is", $user_data['userID'], $insert_message);
 
 		$query->execute();
+		header("location: global.php");
 	}
 ?>
 
@@ -34,7 +35,7 @@ session_start();
 			die("failed to connect!");
 		}
 		//if there are any values in the table, display them one at a time
-		$sql = "SELECT messageID, userID, message FROM messages LIMIT 10";
+		$sql = "SELECT messageID, userID, message FROM messages ORDER BY messageID DESC LIMIT 10";
 		$result = $messages->query($sql);
 		
 		if ($result->num_rows > 0){
@@ -49,7 +50,7 @@ session_start();
 
 	<br><br>
 
-	Your most recent posts:
+	Your most recent posts: <br>
 	<?php
 		$host = "localhost";
 		$username = "root";
@@ -59,7 +60,7 @@ session_start();
 			die("failed to connect!");
 		}
 		//if there are any values in the table, display them one at a time
-		$sql = "SELECT messageID, userID, message FROM messages WHERE userID = " . strval($user_data['userID'] . " LIMIT 10");
+		$sql = "SELECT messageID, userID, message FROM messages WHERE userID = " . strval($user_data['userID'] . " ORDER By messageID DESC LIMIT 10");
 		$result = $messages->query($sql);
 		
 		if ($result->num_rows > 0){
