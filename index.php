@@ -1,33 +1,20 @@
 <?php
 session_start();
-
 	include("connection.php");
 
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
-		$user_name = $_POST['user_name'];
-		$password = $_POST['password'];
 
-		if (!empty($user_name) && !empty($password) && !is_numeric($user_name)){
-			$query = "SELECT * FROM logininfo where username = '$user_name' limit 1";
+	$user_data;
+	if(isset($_SESSION['userID'])){
+		$id = $_SESSION['userID'];
+		$query = "select * from logininfo where userID = '$id' limit 1";
 
-			$result = mysqli_query($con, $query);
-
-			if ($result){
-				if ($result && mysqli_num_rows($result) > 0){
-					$user_data = mysqli_fetch_assoc($result);
-					if($user_data['password'] === $password){
-						$_SESSION['userID'] = $user_data['userID'];
-						header("Location: global.php");
-						die;
-					}
-				}
-			}
-
-			echo "incorrect username or password";
+		$result = mysqli_query($con, $query);
+		if ($result && mysqli_num_rows($result) > 0){
+			$user_data = mysqli_fetch_assoc($result);
 		}
-		else{
-			echo "incorrect username or password";
-		}
+	}
+	else{
+
 	}
 ?>
 
@@ -43,10 +30,20 @@ session_start();
 		<div class="rightHeaderContent">
 			<div class="UserBar">
 				<div class="usernameDisplay">
-					Signed in as Seth
-					<hr>
-					<a href="/robonet" class="logoutLink" >Profile</a>
-					<a style="margin-left: 30px;" href="/robonet" class="logoutLink" >Logout</a>
+				<?php
+					if(isset($_SESSION['userID'])){
+						echo $user_data['username'];
+						echo "<hr>";
+						echo "<a href='/robonet' class='logoutLink' >Profile</a>";
+						echo "<a style='margin-left: 30px;' href='logoutpage.php' class='logoutLink' >Logout</a>";
+					}
+					else{
+						echo "Not signed in";
+						echo "<hr>";
+						echo "<a href='signinpage.php' class='logoutLink'>Sign In</a>";
+						echo "<a style='margin-left: 30px;' href='signuppage.php' class='logoutLink' >Sign Up</a>";
+					}
+				?>
 				</div>
 				<a href="/robonet" class="userLogo"></a>
 			</div>
