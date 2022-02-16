@@ -105,7 +105,7 @@ session_start();
 				</div>
 
 				<div style="display: flex; justify-content: center;">
-					<input type="submit" value="Sign up" class="signinButton">
+					<input type="submit" value="Sign Up" class="signinButton">
 				</div
 			</form>
 		</div>

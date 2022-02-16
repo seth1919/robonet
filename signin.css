@@ -155,6 +155,7 @@ html, body{
 .signinfield {
     background-color: #404040;
     margin-top: 100px;
+    margin-bottom: 100px;
     width: 600px;
 }
 
@@ -182,4 +183,9 @@ html, body{
     background-color: #505050;
     margin: 20px;
     color: white;
+}
+
+.signintomakeapost{
+    color: white;
+    font-size: 20px;
 }
