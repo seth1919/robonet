@@ -52,20 +52,147 @@ session_start();
 			</div>
 		</div>
 	</div>
-	<div class="banner">
-		<div class="centered">
-			<br>
-			<form method="post">
-				<div class="login">Login</div><br>
-
-				<input type="text" name="user_name"><br><br>
-				<input type="password" name="password"><br><br>
-				<input class="LoginButton" type="submit" value="Login"><br><br><br>
-
-				<a style="font-size:20px" href="signup.php">Click here to Signup</a><br><br>
-			</form>
+	<div class="mainContent">
+		<div class="messageField">
+			<div class="messageFieldHeader">
+				<div style="width: 50px;">
+				</div>
+				<h1 style="margin-left: 15px"> Recent Messages </h1>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+		</div>
+		<div class="messageField">
+			<div class="messageFieldHeader">
+				<div style="width: 50px;">
+				</div>
+				<h1 style="margin-left: 15px"> Recent Messages </h1>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+		</div>
+		<div class="messageField">
+			<div class="messageFieldHeader">
+				<div style="width: 50px;">
+				</div>
+				<h1 style="margin-left: 15px"> Recent Messages </h1>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+		</div>
+		<div class="messageField">
+			<div class="messageFieldHeader">
+				<div style="width: 50px;">
+				</div>
+				<h1 style="margin-left: 15px"> Recent Messages </h1>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryText">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
+			<div class="messageEntry">
+				<div style="height: 30px; width: 50px; background-color: black;">
+				</div>
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px">Message Text</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
 </body>
 </html>
