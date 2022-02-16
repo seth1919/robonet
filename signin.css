@@ -1,4 +1,8 @@
-/* holds the starry background image and all the information on top of it */
+body{
+    font-family: Arial;
+    background-color: #232323;
+}
+
 .banner {
     position: relative;
     text-align: center;
@@ -89,4 +93,17 @@
 .logoutLink{
     color: white;
     margin-top: 50px;
+}
+
+.robonettitle{
+    color: white;
+    font-size: 80px;
+    margin-left: 60px;
+}
+
+.smallHeader {
+    background-color: black;
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
