@@ -27,7 +27,7 @@ session_start();
 			if ($result->num_rows > 0){
 				// output data of each row
 				while ($row = $result->fetch_assoc()) {
-					echo "Message number: " . $row["messageID"]. " From user: " . $row["userID"]. " " . $row["message"]. "<br>";
+					echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: " . $user_search . "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
 				}
 			} else {
 				echo "0 results";

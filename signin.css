@@ -13,26 +13,26 @@
 
 .title{
     font-size: 80px;
-    color: white;
-    font-family: 'Copperplate Gothic';
+    color: red;
+    /*font-family: 'Copperplate Gothic';*/
 }
 
-.blacktitle{
+.blacktitle {
     font-size: 80px;
     color: black;
-    font-family: 'Copperplate Gothic';
+    /*font-family: 'Copperplate Gothic';*/
 }
 
 .login {
     font-size: 40px;
     color: white;
-    font-family: 'Copperplate Gothic';
+    /*font-family: 'Copperplate Gothic';*/
 }
 
 .signup {
     font-size: 40px;
     color: black;
-    font-family: 'Copperplate Gothic';
+    /*font-family: 'Copperplate Gothic';*/
 }
 
 .LoginButton{
@@ -41,4 +41,52 @@
     color: white;
     background-color: lightgrey;
     border: none;
+}
+
+.mainHeader {
+    background-color: black;
+    height:100px;
+    display: flex;
+    align-items: center;
+}
+
+.headerLogo{
+    background-size: auto 100%;
+    display: block;
+    background-image: url(voiklarLogo.png);
+    height: 100px;
+    width: 120px;
+}
+
+.userLogo{
+    background-size: auto 100%;
+    display: block;
+    background-image: url(robotProfile.png);
+    height: 70px;
+    width: 70px;
+}
+
+.rightHeaderContent{
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.UserBar {
+    margin-right: 10px;
+    border-style: solid;
+    border-color: lightgray;
+    display: flex;
+    align-items: center;
+}
+
+.usernameDisplay{
+    margin-left: 20px;
+    margin-right: 10px;
+    color: white;
+}
+
+.logoutLink{
+    color: white;
+    margin-top: 50px;
 }

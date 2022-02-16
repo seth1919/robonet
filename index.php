@@ -35,12 +35,33 @@ session_start();
 <!DOCTYPE html>
 <head>
 	<link rel="stylesheet" href="signin.css" />
+	<style>
+		h1 {
+			color: green;
+		}
+		#newid {
+			color:blue;
+		}
+	</style>
 </head>
 <body style="margin: 0px;">
+	<div class="mainHeader">
+		<a href="/robonet" class="headerLogo"></a>
+		<div class="rightHeaderContent">
+			<div class="UserBar">
+				<div class="usernameDisplay">
+					Signed in as Seth
+					<br>
+					<a href="/robonet" class="logoutLink" >Logout</a>
+				</div>
+				<a href="/robonet" class="userLogo"></a>
+			</div>
+		</div>
+	</div>
 	<div class="banner">
 		<img src="Background.png" style="width:100%">
 		<div class="centered">
-			<h1 class="title">robonet</h1>
+			<h1 id=newid class="title">robonet</h1>
 			<br>
 			<form method="post">
 				<div class="login">Login</div><br>
