@@ -127,6 +127,31 @@ session_start();
 		</div>
 	</div>
 
+	<div class="signInContent" style="margin-top: 0px">
+		<div class="signinfield" style="margin-top: 0px">
+			<div class="messageFieldHeader" style="display: flex; justify-content: center">
+				<h1 style="margin-left: 15px">Search for a user</h1>
+			</div>
+			<form action="searchuser.php">
+				<div class="messageEntry">
+					<div class="messageEntryTextOther">
+						<div style="margin-left: 20px">Enter the username here</div>
+					</div>
+				</div>
+				<input type="text" name="user_search" class="signinTextbox">
+
+				<div class="messageEntryTextOther">
+					<div style="margin-left: 20px; color: red;">
+					</div>
+				</div>
+
+				<div style="display: flex; justify-content: center;">
+					<input type="submit" value="Search" class="signinButton">
+				</div>
+			</form>
+		</div>
+	</div>
+
 	<?php
 	if (isset($_SESSION['userID'])){
 		?>
@@ -173,7 +198,6 @@ session_start();
 		<?php
 	}
 	?>
-
 	
 </body>
 </html>
