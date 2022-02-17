@@ -98,4 +98,12 @@ session_start();
 			</form>
 		</div>
 	</div>
+
+	<div class="signInContent" style="margin-top: 0px">
+		<div class="signinfield" style="margin-top: 0px">
+			<div class="messageFieldHeader" style="display: flex; justify-content: center">
+				<a href="signuppage.php" class="signintomakeapost">If you don't have an account, sign up</a>
+			</div>
+		</div>
+	</div>
 </body>

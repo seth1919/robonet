@@ -111,5 +111,12 @@ session_start();
 		</div>
 	</div>
 
+	<div class="signInContent" style="margin-top: 0px">
+		<div class="signinfield" style="margin-top: 0px">
+			<div class="messageFieldHeader" style="display: flex; justify-content: center">
+				<a href="signinpage.php" class="signintomakeapost">If you already have an account, sign in</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
