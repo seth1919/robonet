@@ -49,47 +49,65 @@ session_start();
 		</div>
 	</div>
 
+
 	<?php
-		$user_search = $_GET["user_search"];
+	$user_search = $_GET["user_search"];
+	// if the user exists, display their last 10 messages
+	$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+	$searchResult = mysqli_query($con, $searchQuery);
+	if ($searchResult){
+		if ($searchResult && mysqli_num_rows($searchResult) > 0){
+			$searchData = mysqli_fetch_assoc($searchResult);
 
-		// if the user exists, display their last 10 messages
-		$query = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
 
-		$result = mysqli_query($con, $query);
-
-		if ($result){
-			if ($result && mysqli_num_rows($result) > 0){
-				$user_data1 = mysqli_fetch_assoc($result);
-				?>
-					<div class="userProfile">
-						<div class="profileBackground">
-							<div class="profileBox">
-								<div class="userLogoBig">
-								</div>
-								<div style="margin-top: 50px; font-size: 18px; width: 50%">
-									<?php
-										echo $user_data1['username'];
-										echo "<hr>";
-										echo "<br>";
-										echo "Age: ";
-										echo "<br>";
-										echo "<br>";
-										echo "Gender: ";
-										echo "<br>";
-										echo "<br>";
-										echo "Lives in: ";
-										echo "<br>";
-										echo "<br>";
-										echo "Bio: ";
-										echo "<br>";
-									?>
+			$user_search1 = $_GET["user_search"];
+			// if the user exists, display their last 10 messages
+			$searchQuery1 = "SELECT * FROM userprofiles where userID = '" . $searchData['userID'] . "' LIMIT 1";
+			$searchResult1 = mysqli_query($con, $searchQuery1);
+			if ($searchResult1){
+				if ($searchResult1 && mysqli_num_rows($searchResult1) > 0){
+					$searchData1 = mysqli_fetch_assoc($searchResult1);
+					?>
+						<div class="userProfile">
+							<div class="profileBackground">
+								<div class="profileBox">
+									<div class="userLogoBig">
+									</div>
+									<div style="margin-top: 50px; font-size: 18px; width: 50%">
+										<?php
+											echo $searchData['username'];
+											echo "<hr>";
+											echo "<br>";
+											echo "Age: ";
+											echo $searchData1['age'];
+											echo "<br>";
+											echo "<br>";
+											echo "Gender: ";
+											if ( $searchData1['gender'] == 0){
+												echo "male";
+											}
+											else{
+												echo "female";
+											}
+											echo "<br>";
+											echo "<br>";
+											echo "Lives in: ";
+											echo $searchData1['location'];
+											echo "<br>";
+											echo "<br>";
+											echo "Bio: ";
+											echo $searchData1['bio'];
+											echo "<br>";
+										?>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				<?php
+					<?php
+				}
 			}
 		}
+	}
 	?>
 
 	<div class="mainContent" style="margin-top: 0px">
@@ -174,9 +192,9 @@ session_start();
 							<?php
 						}
 					}
-						} else {
-							echo "0 results";
-						}
+					} else {
+						echo "0 results";
+					}
 					}
 					else{
 						echo "no user with the username " . $user_search . " could be found.";
