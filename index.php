@@ -50,7 +50,9 @@ session_start();
 					if(isset($_SESSION['userID'])){
 						echo $user_data['username'];
 						echo "<hr>";
-						echo "<a href='/robonet' class='logoutLink' >Profile</a>";
+						echo "<a href='searchuser.php?user_search=";
+						echo $user_data['username'];
+						echo "' class='logoutLink' >Profile</a>";
 						echo "<a style='margin-left: 30px;' href='logoutpage.php' class='logoutLink' >Logout</a>";
 					}
 					else{
@@ -95,10 +97,16 @@ session_start();
 									<div style="height: 30px; width: 50px; background-color: black;">
 									</div>
 									<div class="messageEntryText">
-										<div style="margin-left: 20px">
-										<?php 
-											echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: " . $matching_user["username"]. "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
-										?>
+										<div style="margin-left: 20px; display: flex">
+											<div style="width: 400px">
+												<?php 
+													echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: ";
+												?>
+												<a href="searchuser.php?user_search=<?php echo $matching_user["username"] ?>" style="color: white;"><?php echo $matching_user["username"] ?></a>
+											</div>
+											<?php
+												echo "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
+											?>
 										</div>
 									</div>
 								</div>
@@ -110,10 +118,16 @@ session_start();
 									<div style="height: 30px; width: 50px; background-color: black;">
 									</div>
 									<div class="messageEntryTextOther">
-										<div style="margin-left: 20px">
-										<?php 
-											echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: " . $matching_user["username"]. "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
-										?>
+										<div style="margin-left: 20px; display: flex">
+											<div style="width: 400px">
+												<?php 
+													echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: ";
+												?>
+												<a href="searchuser.php?user_search=<?php echo $matching_user["username"] ?>" style="color: white;"><?php echo $matching_user["username"] ?></a>
+											</div>
+											<?php
+												echo "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
+											?>
 										</div>
 									</div>
 								</div>

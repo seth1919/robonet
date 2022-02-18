@@ -78,21 +78,58 @@ session_start();
 						
 						if ($result->num_rows > 0){
 							// output data of each row
-							while ($row = $result->fetch_assoc()) {
-								?>
-									<div class="messageEntry">
-										<div style="height: 30px; width: 50px; background-color: black;">
-										</div>
-										<div class="messageEntryTextOther">
-											<div style="margin-left: 20px">
-											<?php 
-												echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: " . $user_data1["username"]. "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
-											?>
+					$message_count = 0;
+					while ($row = $result->fetch_assoc()) {
+						$message_count = $message_count + 1;
+						$matching_user_query = "select * from logininfo where userID = '" . $row['userID'] . "' limit 1";
+						$matching_user_result = mysqli_query($con, $matching_user_query);
+						if ($matching_user_result && mysqli_num_rows($matching_user_result) > 0){
+							$matching_user = mysqli_fetch_assoc($matching_user_result);
+						}
+
+						if ($message_count % 2 == 0){
+							?>
+								<div class="messageEntry">
+									<div style="height: 30px; width: 50px; background-color: black;">
+									</div>
+									<div class="messageEntryText">
+										<div style="margin-left: 20px; display: flex">
+											<div style="width: 400px">
+												<?php 
+													echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: ";
+												?>
+												<a href="searchuser.php?user_search=<?php echo $matching_user["username"] ?>" style="color: white;"><?php echo $matching_user["username"] ?></a>
 											</div>
+											<?php
+												echo "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
+											?>
 										</div>
 									</div>
-								<?php
-							}
+								</div>
+							<?php
+						}
+						else{
+							?>
+								<div class="messageEntry">
+									<div style="height: 30px; width: 50px; background-color: black;">
+									</div>
+									<div class="messageEntryTextOther">
+										<div style="margin-left: 20px; display: flex">
+											<div style="width: 400px">
+												<?php 
+													echo "Message number: " . $row["messageID"]. "&nbsp&nbsp&nbsp&nbsp From user: ";
+												?>
+												<a href="searchuser.php?user_search=<?php echo $matching_user["username"] ?>" style="color: white;"><?php echo $matching_user["username"] ?></a>
+											</div>
+											<?php
+												echo "&nbsp&nbsp&nbsp&nbsp " . $row["message"]. "<br>";
+											?>
+										</div>
+									</div>
+								</div>
+							<?php
+						}
+					}
 						} else {
 							echo "0 results";
 						}
