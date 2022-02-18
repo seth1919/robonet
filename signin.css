@@ -220,3 +220,11 @@ html, body{
     height: 335px;
     width: 335px;
 }
+
+.gender_dropdown {
+    background-color: #303030;
+    margin: 20px;
+    color: white;
+    height: 30px;
+    width: 100px;
+}

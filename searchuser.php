@@ -33,7 +33,7 @@ session_start();
 					if(isset($_SESSION['userID'])){
 						echo $user_data['username'];
 						echo "<hr>";
-						echo "<a href='/robonet' class='logoutLink' >Profile</a>";
+						echo "<a href='/robonet/searchuser.php?user_search=" . $user_data['username'] . "' class='logoutLink' >Profile</a>";
 						echo "<a style='margin-left: 30px;' href='logoutpage.php' class='logoutLink' >Logout</a>";
 					}
 					else{
@@ -51,14 +51,15 @@ session_start();
 
 
 	<?php
-	$user_search = $_GET["user_search"];
-	// if the user exists, display their last 10 messages
-	$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
-	$searchResult = mysqli_query($con, $searchQuery);
-	if ($searchResult){
+		$user_search_ID = 0;
+		$user_search = $_GET["user_search"];
+		// if the user exists, display their last 10 messages
+		$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+		$searchResult = mysqli_query($con, $searchQuery);
+		if ($searchResult){
 		if ($searchResult && mysqli_num_rows($searchResult) > 0){
 			$searchData = mysqli_fetch_assoc($searchResult);
-
+			$user_search_ID = $searchData['userID'];
 
 			$user_search1 = $_GET["user_search"];
 			// if the user exists, display their last 10 messages
@@ -115,7 +116,31 @@ session_start();
 				}
 			}
 		}
-	}
+		}
+	?>
+
+	<?php
+		//ensure that the user is loggged in
+		if(isset($_SESSION['userID'])) {
+			//ensure that the searched user exists
+			if($user_search_ID != 0){
+				//ensure that the user is viewing their own account
+				if ($user_search_ID == $_SESSION['userID']){
+					//add the edit button
+					
+					?>
+					<div class="signInContent" style="margin-top: 100px">
+						<div class="signinfield" style="margin-top: 0px; margin-bottom: 0px">
+							<div class="messageFieldHeader" style="display: flex; justify-content: center">
+								<a href="editprofile.php" class="signintomakeapost">Edit your profile</a>
+							</div>
+						</div>
+					</div>
+					<?php
+					
+				}
+			}
+		}
 	?>
 
 	<div class="mainContent" style="margin-top: 0px">

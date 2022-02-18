@@ -16,3 +16,10 @@ function check_login($con){
 	header("Location: index.php");
 	die;
 }
+
+function reverse_check_login($con){
+	if(isset($_SESSION['userID'])){
+		header("Location: index.php");
+		die;
+	}
+}

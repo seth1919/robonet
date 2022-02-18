@@ -2,7 +2,9 @@
 session_start();
 
 	include("connection.php");
+	include("checklogin.php");
 
+	$user_data = reverse_check_login($con);
 	$error_message;
 
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -71,7 +73,7 @@ session_start();
 					if(isset($_SESSION['userID'])){
 						echo "Signed in as Seth";
 						echo "<hr>";
-						echo "<a href='/robonet' class='logoutLink' >Profile</a>";
+						echo "<a href='/robonet/searchuser.php?user_search=" . $user_data['username'] . "' class='logoutLink' >Profile</a>";
 						echo "<a style='margin-left: 30px;' href='logoutpage.php' class='logoutLink' >Logout</a>";
 					}
 					else{
