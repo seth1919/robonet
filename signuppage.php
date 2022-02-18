@@ -33,6 +33,19 @@ session_start();
 
 				mysqli_query($con, $query);
 
+				$user_search = $_POST["user_name"];
+				// if the user exists, display their last 10 messages
+				$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+				$searchResult = mysqli_query($con, $searchQuery);
+				if ($searchResult){
+					if ($searchResult && mysqli_num_rows($searchResult) > 0){
+						$searchData = mysqli_fetch_assoc($searchResult);
+						
+						$insertQuery = "insert into userprofiles (userID,age,gender,location,bio) values (". $searchData['userID'] .",675,2,'no data','not set')";
+						mysqli_query($con, $insertQuery);
+					}
+				}
+
 				header("Location: signinpage.php");
 				die;
 			}else{

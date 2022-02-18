@@ -79,15 +79,23 @@ session_start();
 											echo "<hr>";
 											echo "<br>";
 											echo "Age: ";
-											echo $searchData1['age'];
+											if ($searchData1['age'] != 675){
+												echo $searchData1['age'];
+											}
+											else{
+												echo "not set";
+											}
 											echo "<br>";
 											echo "<br>";
 											echo "Gender: ";
 											if ( $searchData1['gender'] == 0){
 												echo "male";
 											}
-											else{
+											else if ( $searchData1['gender'] == 1){
 												echo "female";
+											}
+											else{
+												echo "not set";
 											}
 											echo "<br>";
 											echo "<br>";
