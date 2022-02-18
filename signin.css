@@ -189,3 +189,34 @@ html, body{
     color: white;
     font-size: 20px;
 }
+
+.userProfile {
+    margin-top: 100px;
+    display: flex;
+    overflow: auto;
+    justify-content: center;
+}
+
+.profileBackground{
+    margin-top: 100px;
+    background-color: black;
+    width: 900px;
+    height: 400px;
+}
+
+.profileBox {
+    margin: 30px;
+    height: 335px;
+    border-color: lightgray;
+    border: solid;
+    display: flex;
+    align-items: flex-start;
+}
+
+.userLogoBig{
+    background-size: auto 100%;
+    display: block;
+    background-image: url(robotProfileBig.png);
+    height: 335px;
+    width: 335px;
+}

@@ -48,7 +48,51 @@ session_start();
 			</div>
 		</div>
 	</div>
-	<div class="mainContent">
+
+	<?php
+		$user_search = $_GET["user_search"];
+
+		// if the user exists, display their last 10 messages
+		$query = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+
+		$result = mysqli_query($con, $query);
+
+		if ($result){
+			if ($result && mysqli_num_rows($result) > 0){
+				$user_data1 = mysqli_fetch_assoc($result);
+				?>
+					<div class="userProfile">
+						<div class="profileBackground">
+							<div class="profileBox">
+								<div class="userLogoBig">
+								</div>
+								<div style="margin-top: 50px; font-size: 18px; width: 50%">
+									<?php
+										echo $user_data1['username'];
+										echo "<hr>";
+										echo "<br>";
+										echo "Age: ";
+										echo "<br>";
+										echo "<br>";
+										echo "Gender: ";
+										echo "<br>";
+										echo "<br>";
+										echo "Lives in: ";
+										echo "<br>";
+										echo "<br>";
+										echo "Bio: ";
+										echo "<br>";
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php
+			}
+		}
+	?>
+
+	<div class="mainContent" style="margin-top: 0px">
 		<div class="messageField">
 
 			<?php
