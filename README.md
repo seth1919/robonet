@@ -4,7 +4,7 @@ This is a website that allows users to create profiles with their username, age,
 To view this site, you will need to host it on a server with a mySQL server. In my development I used xampp.
 This code assumes that the mySQL server is accessible with the login information saved in connection.php.
 This code assumes that the mySQL server has the following database already set up:<br />
-database: robonetusers<br /><br />
+database: robonetusers<br />
 table: loginifo<br />
  &nbsp;&nbsp;   column: userID, int(11), auto-increment<br />
  &nbsp;&nbsp;   column: username, varchar(50)<br />
