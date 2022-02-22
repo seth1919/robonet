@@ -5,7 +5,7 @@ To view this site, you will need to host it on a server with a mySQL server. In 
 This code assumes that the mySQL server is accessible with the login information saved in connection.php.
 This code assumes that the mySQL server has the following database already set up:<br />
 database: robonetusers<br />
-table: loginifo<br />
+ &nbsp;  table: loginifo<br />
  &nbsp;&nbsp;   column: userID, int(11), auto-increment<br />
  &nbsp;&nbsp;   column: username, varchar(50)<br />
  &nbsp;&nbsp;   column: password, varchar(50)<br />
