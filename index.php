@@ -4,6 +4,7 @@ session_start();
 
 
 	$user_data;
+	$user_profile;
 	if(isset($_SESSION['userID'])){
 		$id = $_SESSION['userID'];
 		$query = "select * from logininfo where userID = '$id' limit 1";
@@ -11,6 +12,13 @@ session_start();
 		$result = mysqli_query($con, $query);
 		if ($result && mysqli_num_rows($result) > 0){
 			$user_data = mysqli_fetch_assoc($result);
+		}
+
+		$profileQuery = "select * from userprofiles where userID = '$id' limit 1";
+
+		$profileResult = mysqli_query($con, $profileQuery);
+		if ($profileResult && mysqli_num_rows($profileResult) > 0){
+			$user_profile = mysqli_fetch_assoc($profileResult);
 		}
 	}
 	else{
@@ -41,7 +49,21 @@ session_start();
 </head>
 <body style="margin: 0px;">
 	<?php
-		$adname = "Cave4.png";
+		$adname = "BathroomRevised2.png";
+
+		if (isset($_SESSION['userID'])){
+			// find an ad which matches the user's data
+			$ad;
+			$adQuery = "select * from advertisements where (gender = " . $user_profile['gender'] . " OR gender = 2) AND lowerAge < " . $user_profile['age'] . " AND upperAge > " . $user_profile['age'] . " AND (location = 'Any' OR location = '" . $user_profile['location'] . "');";
+			$adresult = mysqli_query($con, $adQuery);
+			if ($adresult && mysqli_num_rows($adresult) > 0){
+				$ad = mysqli_fetch_assoc($adresult);
+
+				$adname = $ad['adName'];
+				$adShowingDecrease = "UPDATE advertisements SET adShowings = " . ($ad['adShowings'] - 1) . " WHERE adID = " . $ad['adID'] . "";
+				mysqli_query($con, $adShowingDecrease);
+			}
+		}
 	?>
 
 	<div class="advertisementContainer">
