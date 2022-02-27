@@ -40,6 +40,14 @@ session_start();
 	<link rel="stylesheet" href="signin.css" />
 </head>
 <body style="margin: 0px;">
+	<?php
+		$adname = "Cave4.png";
+	?>
+
+	<div class="advertisementContainer">
+		<img src="advertisementImages/<?php echo $adname; ?>" class="advertisement">
+	</div>
+
 	<div class="mainHeader">
 		<a href="/robonet" class="headerLogo"></a>
 		<h1 class="robonettitle">ROBONET</h1>
@@ -67,7 +75,7 @@ session_start();
 			</div>
 		</div>
 	</div>
-	<div class="mainContent">
+	<div class="mainContent" style="margin-top: 0px">
 		<div class="messageField">
 			<div class="messageFieldHeader">
 				<div style="width: 50px;">

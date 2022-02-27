@@ -228,3 +228,13 @@ html, body{
     height: 30px;
     width: 100px;
 }
+
+.advertisementContainer {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.advertisement {
+    height: 300px;
+}
