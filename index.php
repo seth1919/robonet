@@ -49,7 +49,7 @@ session_start();
 </head>
 <body style="margin: 0px;">
 	<?php
-		$adname = "BathroomRevised2.png";
+		$adname = "waterBottleAd.jpg";
 
 		if (isset($_SESSION['userID'])){
 			// find an ad which matches the user's data
