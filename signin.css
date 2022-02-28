@@ -115,13 +115,14 @@ html, body{
 }
 
 .mainContent{
-    margin-top: 100px;
     flex-grow:1;
     overflow: auto;
 }
 
 .messageField{
-    margin: 100px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .messageFieldHeader{
@@ -230,11 +231,15 @@ html, body{
 }
 
 .advertisementContainer {
-    margin-top: 200px;
     display: flex;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .advertisement {
     height: 300px;
+}
+
+.spacer{
+    height: 200px;
 }

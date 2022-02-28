@@ -66,6 +66,9 @@ session_start();
 		}
 	?>
 
+	<div class="spacer">
+	</div>
+
 	<div class="advertisementContainer">
 		<img src="advertisementImages/<?php echo $adname; ?>" class="advertisement">
 	</div>
