@@ -230,7 +230,16 @@ session_start();
 					}
 					}
 					else{
-						echo "no user with the username " . $user_search . " could be found.";
+						?>
+						<div class='spacer'> </div>
+						<div class="signInContent" style="margin-top: 0px">
+							<div class="signinfield" style="margin-top: 0px; margin-bottom: 0px;">
+								<div class="messageFieldHeader" style="height: 50px; display: flex; justify-content: center">
+									<div class="signintomakeapost">No user with the username <?php echo $user_search; ?> could be found</div>
+								</div>
+							</div>
+						</div>
+						<?php
 					}
 				}
 				else{
