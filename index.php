@@ -54,7 +54,7 @@ session_start();
 		if (isset($_SESSION['userID'])){
 			// find an ad which matches the user's data
 			$ad;
-			$adQuery = "select * from advertisements where (gender = " . $user_profile['gender'] . " OR gender = 2) AND lowerAge < " . $user_profile['age'] . " AND upperAge > " . $user_profile['age'] . " AND (location = 'Any' OR location = '" . $user_profile['location'] . "');";
+			$adQuery = "select * from advertisements where (gender = " . $user_profile['gender'] . " OR gender = 2) AND lowerAge < " . $user_profile['age'] . " AND upperAge > " . $user_profile['age'] . " AND (location = 'Any' OR location = '" . $user_profile['location'] . "') AND adShowings > 0;";
 			$adresult = mysqli_query($con, $adQuery);
 			if ($adresult && mysqli_num_rows($adresult) > 0){
 				$ad = mysqli_fetch_assoc($adresult);
