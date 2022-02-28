@@ -100,7 +100,7 @@ session_start();
 											}
 											echo "<br>";
 											echo "<br>";
-											echo "Lives in: ";
+											echo "City: ";
 											echo $searchData1['location'];
 											echo "<br>";
 											echo "<br>";

@@ -106,7 +106,7 @@ session_start();
 												}
 												echo "<br>";
 												echo "<br>";
-												echo "Lives in: ";
+												echo "City: ";
 												echo $searchData1['location'];
 												echo "<br>";
 												echo "<br>";
@@ -150,7 +150,7 @@ session_start();
 
 				<div class="messageEntry">
 					<div class="messageEntryTextOther">
-						<div style="margin-left: 20px">Enter your locaton</div>
+						<div style="margin-left: 20px">Enter your city</div>
 					</div>
 				</div>
 				<input type="text" name="location_input" class="signinTextbox">
