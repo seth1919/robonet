@@ -130,7 +130,7 @@ session_start();
 					
 					?>
 					<div class="signInContent" style="margin-top: 100px">
-						<div class="signinfield" style="margin-top: 0px; margin-bottom: 0px">
+						<div class="signinfield" style="margin-top: 0px; margin-bottom: 100px">
 							<div class="messageFieldHeader" style="display: flex; justify-content: center">
 								<a href="editprofile.php" class="signintomakeapost">Edit your profile</a>
 							</div>
