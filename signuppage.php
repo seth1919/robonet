@@ -12,7 +12,7 @@ session_start();
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
 
-		if (!empty($user_name) && !empty($password) && !is_numeric($user_name)){
+		if (!empty($user_name) && !empty($password) && !is_numeric($user_name) && ctype_alnum($user_name)){
 			$query = "SELECT * FROM logininfo where username = '$user_name' limit 1";
 
 			$result = mysqli_query($con, $query);
@@ -25,7 +25,7 @@ session_start();
 			}
 		}
 		else{
-			$error_message = "Enter a valid username and password";
+			$error_message = "Enter a valid username or password";
 		}
 
 		if (empty($error_message)){
