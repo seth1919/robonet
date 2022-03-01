@@ -154,7 +154,7 @@ session_start();
 
 				$result = mysqli_query($con, $query);
 
-				if ($result){
+				if ($result && $user_search != ""){
 					if ($result && mysqli_num_rows($result) > 0){
 						$user_data1 = mysqli_fetch_assoc($result);
 
@@ -243,7 +243,16 @@ session_start();
 					}
 				}
 				else{
-					echo "no user with the username " . $user_search . " could be found.";
+					?>
+					<div class='spacer'> </div>
+					<div class="signInContent" style="margin-top: 0px">
+						<div class="signinfield" style="margin-top: 0px; margin-bottom: 0px;">
+							<div class="messageFieldHeader" style="height: 50px; display: flex; justify-content: center">
+								<div class="signintomakeapost">You must enter a username to make a search</div>
+							</div>
+						</div>
+					</div>
+					<?php
 				}
 			?>
 		</div>
