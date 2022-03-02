@@ -13,9 +13,11 @@ session_start();
 		$password = $_POST['password'];
 
 		if (!empty($user_name) && !empty($password) && !is_numeric($user_name) && ctype_alnum($user_name)){
-			$query = "SELECT * FROM logininfo where username = '$user_name' limit 1";
-
-			$result = mysqli_query($con, $query);
+			
+			$query = $con->prepare('SELECT * FROM logininfo where username = ? limit 1');
+			$query->bind_param('s', $user_name);
+			$query->execute();
+			$result = $query->get_result();
 
 			if ($result){
 				if ($result && mysqli_num_rows($result) > 0){
@@ -25,28 +27,16 @@ session_start();
 			}
 		}
 		else{
-			$error_message = "Enter a valid username or password";
+			$error_message = "Enter a valid username and password.";
 		}
 
 		if (empty($error_message)){
 			if (!empty($user_name) && !empty($password) && !is_numeric($user_name)){
 				
-				$query = "insert into logininfo (userID,username,password) values (NULL,'$user_name','$password')";
-
-				mysqli_query($con, $query);
-
-				$user_search = $_POST["user_name"];
-				// if the user exists, display their last 10 messages
-				$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
-				$searchResult = mysqli_query($con, $searchQuery);
-				if ($searchResult){
-					if ($searchResult && mysqli_num_rows($searchResult) > 0){
-						$searchData = mysqli_fetch_assoc($searchResult);
-						
-						$insertQuery = "insert into userprofiles (userID,age,gender,location,bio) values (". $searchData['userID'] .",675,2,'no data','not set')";
-						mysqli_query($con, $insertQuery);
-					}
-				}
+				$query = $con->prepare('insert into logininfo (userID,username,password) values (NULL, ?, ?)');
+				$query->bind_param('ss', $user_name, $password);
+				$query->execute();
+				$result = $query->get_result();
 
 				header("Location: signinpage.php");
 				die;
