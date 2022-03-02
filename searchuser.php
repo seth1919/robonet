@@ -54,8 +54,13 @@ session_start();
 		$user_search_ID = 0;
 		$user_search = $_GET["user_search"];
 		// if the user exists, display their last 10 messages
-		$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
-		$searchResult = mysqli_query($con, $searchQuery);
+		$searchQuery = $con->prepare('SELECT * FROM logininfo where username = ? limit 1');
+		$searchQuery->bind_param('s', $user_search);
+		$searchQuery->execute();
+		$searchResult = $searchQuery->get_result();
+
+		//$searchQuery = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+		//$searchResult = mysqli_query($con, $searchQuery);
 		if ($searchResult){
 		if ($searchResult && mysqli_num_rows($searchResult) > 0){
 			$searchData = mysqli_fetch_assoc($searchResult);
@@ -63,8 +68,13 @@ session_start();
 
 			$user_search1 = $_GET["user_search"];
 			// if the user exists, display their last 10 messages
-			$searchQuery1 = "SELECT * FROM userprofiles where userID = '" . $searchData['userID'] . "' LIMIT 1";
-			$searchResult1 = mysqli_query($con, $searchQuery1);
+			$searchQuery1 = $con->prepare('SELECT * FROM userprofiles where userID = ? limit 1');
+			$searchQuery1->bind_param('s', $searchData['userID']);
+			$searchQuery1->execute();
+			$searchResult1 = $searchQuery1->get_result();
+
+			//$searchQuery1 = "SELECT * FROM userprofiles where userID = '" . $searchData['userID'] . "' LIMIT 1";
+			//$searchResult1 = mysqli_query($con, $searchQuery1);
 			if ($searchResult1){
 				if ($searchResult1 && mysqli_num_rows($searchResult1) > 0){
 					$searchData1 = mysqli_fetch_assoc($searchResult1);
@@ -150,9 +160,13 @@ session_start();
 				$user_search = $_GET["user_search"];
 
 				// if the user exists, display their last 10 messages
-				$query = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+				$query = $con->prepare('SELECT * FROM logininfo where username = ? limit 1');
+				$query->bind_param('s', $user_search);
+				$query->execute();
+				$result = $query->get_result();
 
-				$result = mysqli_query($con, $query);
+				//$query = "SELECT * FROM logininfo where username = '$user_search' LIMIT 1";
+				//$result = mysqli_query($con, $query);
 
 				if ($result && $user_search != ""){
 					if ($result && mysqli_num_rows($result) > 0){
@@ -176,8 +190,15 @@ session_start();
 					$message_count = 0;
 					while ($row = $result->fetch_assoc()) {
 						$message_count = $message_count + 1;
-						$matching_user_query = "select * from logininfo where userID = '" . $row['userID'] . "' limit 1";
-						$matching_user_result = mysqli_query($con, $matching_user_query);
+
+						$matching_user_query = $con->prepare('SELECT * FROM logininfo where userID = ? limit 1');
+						$matching_user_query->bind_param('s', $row['userID']);
+						$matching_user_query->execute();
+						$matching_user_result = $matching_user_query->get_result();
+
+						//$matching_user_query = "select * from logininfo where userID = '" . $row['userID'] . "' limit 1";
+						//$matching_user_result = mysqli_query($con, $matching_user_query);
+						
 						if ($matching_user_result && mysqli_num_rows($matching_user_result) > 0){
 							$matching_user = mysqli_fetch_assoc($matching_user_result);
 						}
