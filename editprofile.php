@@ -16,8 +16,10 @@ session_start();
 		if (empty($error_message)){
 			if (!empty($age_recieved) && is_numeric($age_recieved) && !empty($location_recieved) && !empty($bio_recieved)){
 				
-				$query = "UPDATE userprofiles SET age=" . $age_recieved . ", gender=" . $gender_recieved . ", location='" . $location_recieved . "', bio='" . $bio_recieved . "' WHERE userID=" . $_SESSION['userID'];
-				mysqli_query($con, $query);
+				$query = $con->prepare('UPDATE userprofiles SET age= ?, gender= ?, location= ?, bio= ? WHERE userID = ?');
+				$query->bind_param('iissi', $age_recieved, $gender_recieved, $location_recieved, $bio_recieved, $_SESSION['userID']);
+				$query->execute();
+				$result = $query->get_result();
 
 				header("Location: editprofile.php");
 				die;
