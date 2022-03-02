@@ -11,9 +11,10 @@ session_start();
 		$password = $_POST['password'];
 
 		if (!empty($user_name) && !empty($password) && !is_numeric($user_name)){
-			$query = "SELECT * FROM logininfo where username = '$user_name' limit 1";
-
-			$result = mysqli_query($con, $query);
+			$query = $con->prepare('SELECT * FROM logininfo where username = ? limit 1');
+			$query->bind_param('s', $user_name);
+			$query->execute();
+			$result = $query->get_result();
 
 			if ($result){
 				if ($result && mysqli_num_rows($result) > 0){
